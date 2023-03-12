@@ -37,7 +37,6 @@ class AdminController extends Controller
           }
           
           return view('admin.index', [
-            // 'user' => Auth::user()->name
             'user' => auth()->user()->adminType->admin_type_name
           ]);
     }

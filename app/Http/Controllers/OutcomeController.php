@@ -29,7 +29,7 @@ class OutcomeController extends Controller
                     })
                     ->addColumn('total', function($transaction){
                         
-                        return number_format($transaction->total , 0, ',', '.');
+                        return 'Rp' . number_format($transaction->total , 0, ',', '.');
                     })
                     ->addColumn('status', function($transaction){
                         
@@ -60,7 +60,7 @@ class OutcomeController extends Controller
           }
           
           return view('outcome.index',[
-            'user' => Auth::user()->name
+            'user' => auth()->user()->adminType->admin_type_name
           ]);
     }
 
@@ -94,7 +94,7 @@ class OutcomeController extends Controller
         ]); 
 
         $user = Auth::user();
-        if($user -> name != 'owner'){
+        if(auth()->user()->adminType->admin_type_name != 'superAdmin'){
             $up = $user -> name.'.create';
         }else{
             $up = $user -> name;
@@ -112,7 +112,7 @@ class OutcomeController extends Controller
             'updated_by' => $up
         ]);
         
-        return redirect('/outcome')->with('message', 'Outcome ' . $request['transaction_name'] . ' created successfully!');
+        return redirect('/outcome')->with('message', 'Create request for Outcome ' . $request['transaction_name'] . ' sent successfully!');
     }
 
     /**
@@ -161,7 +161,7 @@ class OutcomeController extends Controller
         $outcome = Transaction::where('id', 'like', $id)->first();
 
         $user = Auth::user();
-        if($user -> name != 'owner'){
+        if(auth()->user()->adminType->admin_type_name != 'superAdmin'){
             $up = $user -> name.'.edit';
         }else{
             $up = $user -> name;
@@ -178,13 +178,13 @@ class OutcomeController extends Controller
             'updated_by' => $up
         ]);
 
-        return redirect('/outcome')->with('message', 'outcome ' . $request['transaction_name'] . ' updated successfully!');
+        return redirect('/outcome')->with('message', 'Update request for Outcome ' . $request['transaction_name'] . ' sent successfully!');
     }
 
     public function requestDelete(Request $req)
     {
         $user = Auth::user();
-        if($user -> name != 'owner'){
+        if(auth()->user()->adminType->admin_type_name != 'superAdmin'){
             $up = $user -> name.'.delete';
         }else{
             $up = $user -> name;

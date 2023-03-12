@@ -35,7 +35,7 @@ class IncomeController extends Controller
             })
             ->addColumn('total', function($transaction){
                 
-                return number_format($transaction->total , 0, ',', '.');
+                return 'Rp' . number_format($transaction->total , 0, ',', '.');
             })
             ->addColumn('status', function($transaction){
     
@@ -66,7 +66,7 @@ class IncomeController extends Controller
           }
           
           return view('income.index', [
-            'user' => Auth::user()->name
+            'user' => auth()->user()->adminType->admin_type_name
           ]);
     }
 
@@ -103,7 +103,7 @@ class IncomeController extends Controller
         $res = str_replace( '.', '', $request -> total);
 
         $user = Auth::user();
-        if($user -> name != 'owner'){
+        if(auth()->user()->adminType->admin_type_name != 'superAdmin'){
             $up = $user -> name.'.create';
         }else{
             $up = $user -> name;
@@ -120,7 +120,7 @@ class IncomeController extends Controller
             'updated_by' => $up
         ]);
 
-        return redirect('/income')->with('message', 'Income ' . $request['transaction_name'] . ' created successfully!');
+        return redirect('/income')->with('message', 'Create request for Income ' . $request['transaction_name'] . ' sent successfully!');
     }
 
     /**
@@ -168,7 +168,7 @@ class IncomeController extends Controller
         $income = Transaction::where('id', 'like', $id)->first();
         
         $user = Auth::user();
-        if($user -> name != 'owner'){
+        if(auth()->user()->adminType->admin_type_name != 'superAdmin'){
             $up = $user -> name.'.edit';
         }else{
             $up = $user -> name;
@@ -185,7 +185,7 @@ class IncomeController extends Controller
             'updated_by' => $up
         ]);
 
-        return redirect('/income')->with('message', 'Income ' . $request['transaction_name'] . ' updated successfully!');
+        return redirect('/income')->with('message', 'Update request for Income ' . $request['transaction_name'] . ' sent successfully!');
     }
 
     
@@ -193,13 +193,13 @@ class IncomeController extends Controller
     {
         
         $user = Auth::user();
-        if($user -> name != 'owner'){
+        if(auth()->user()->adminType->admin_type_name != 'superAdmin'){
             $up = $user -> name.'.delete';
         }else{
             $up = $user -> name;
         }
 
-        if($user -> name == 'owner'){
+        if(auth()->user()->adminType->admin_type_name == 'superAdmin'){
             $deleted = Transaction::where('id', 'like', $req ->id)->delete();
             return redirect('/income')->with('message', 'Income deleted successfully!'); 
         }else{
