@@ -41,11 +41,11 @@
         </div>
         <div class="row mb-3">
           <div class="mb-3 col-lg-4 col-12">
-              <label for="total" class="form-label">Total</label>
-              <input type="text" name="total" class="form-control" id="total" value="{{ old('total') }}">
-              @error('total')
-                <p class="text-danger">{{ $message }}</p>
-          @enderror
+            <label for="total" class="form-label">Total</label>
+            <input type="text" name="total" class="form-control" id="total" value="{{ old('total') }}">
+            @error('total')
+              <p class="text-danger">{{ $message }}</p>
+            @enderror
           </div>
         </div>
         <div class="d-flex">

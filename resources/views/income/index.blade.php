@@ -17,7 +17,6 @@
                 <th scope="col">Source</th>
                 <th scope="col">Date</th>
                 <th scope="col">Total</th>
-                {{-- <th scope="col">Nilai Real</th> --}}
                 <th scope="col">Status</th>
                 <th scope="col">Action</th>
               </tr>
@@ -66,10 +65,6 @@
           data: 'total', 
           name: 'total'
         },
-        // {
-        //   data: 'real', 
-        //   name: 'real'
-        // },
         {
           data: 'status', 
           name: 'status'
