@@ -23,9 +23,6 @@ class DatabaseSeeder extends Seeder
         
         $this->call(AdminTypeSeeder::class);
         $this->call(AdminSeeder::class);
-        $this->call(ProjectSeeder::class);
-        $this->call(PositionTypeSeeder::class);
-        $this->call(EmployeeSeeder::class);
         $this->call(TransactionTypeSeeder::class);
         $this->call(TransactionSourceSeeder::class);
         $this->call(TransactionIncomeSeeder::class);

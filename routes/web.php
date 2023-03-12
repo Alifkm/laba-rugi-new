@@ -44,30 +44,6 @@ Route::controller(AdminController::class)->group(function() {
 
 
 
-// PROJECT CONTROLLER
-Route::controller(ProjectController::class)->group(function() {
-  Route::get('/project', 'index')->middleware('auth')->name('project.index'); // get all project
-  Route::get('/project/create', 'create')->middleware(['thisIsAdmin', 'auth'])->name('project.create'); // create project form
-  Route::post('/project', 'store')->middleware(['thisIsAdmin', 'auth'])->name('project.store'); // store project data
-  Route::get('/project/{project}/edit', 'edit')->middleware('auth')->name('project.edit'); // show project edit form
-  Route::put('/project/{project}', 'update')->middleware(['thisIsAdmin', 'auth'])->name('project.update'); // update project data
-  Route::get('/project/{project}', 'destroy')->middleware(['thisIsAdmin', 'auth'])->name('project.delete'); // delete project data
-});
-
-
-
-// EMPLOYEE CONTROLLER
-Route::controller(EmployeeController::class)->group(function() {
-  Route::get('/employee', 'index')->middleware('auth')->name('employee.index'); // get all employee
-  Route::get('/employee/create', 'create')->middleware(['thisIsAdmin', 'auth'])->name('employee.create'); // create employee form
-  Route::post('/employee', 'store')->middleware(['thisIsAdmin', 'auth'])->name('employee.store'); // store employee data
-  Route::get('/employee/{employee}/edit', 'edit')->middleware('auth')->name('employee.edit'); // show employee edit form
-  Route::put('/employee/{employee}', 'update')->middleware(['thisIsAdmin', 'auth'])->name('employee.update'); // update employee data
-  Route::get('/employee/{employee}', 'destroy')->middleware(['thisIsAdmin', 'auth'])->name('employee.delete'); // delete employee data
-});
-
-
-
 // INCOME CONTROLLER
 Route::controller(IncomeController::class)->group(function() {
   Route::get('/income', 'index')->middleware('auth')->name('income.index'); // all income
@@ -108,17 +84,3 @@ Route::controller(ChangePasswordController::class)->group(function() {
 });
 
 Auth::routes();
-
-
-
-// Route::controller(UserController::class)->group(function() {
-//   Route::get('/user', 'index')->name('user.index'); // all user
-//   Route::get('/user/create', 'create')->name('user.create'); // create user form
-//   Route::post('/user', 'store')->name('user.store'); // store user data
-//   Route::get('/user/{user}/edit', 'edit')->name('user.edit'); // show user edit form
-//   Route::put('/user/{user}', 'update')->name('user.update'); // update user data
-//   Route::get('/user/{user}', 'destroy')->name('user.delete'); // delete user data
-// });
-
-
-  // Route::get('/chart/{year?}', 'chart')->middleware('auth')->name('chart.index'); // filter chart

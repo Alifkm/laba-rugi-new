@@ -264,13 +264,6 @@
             <li class="nav-item">
               <a class="nav-link {{ Request::is('admin*') ? 'text-danger' : 'text-dark' }} text-center" href="{{ url('/admin') }} ">Admin</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link {{ Request::is('project*') ? 'text-danger' : 'text-dark' }} text-center" href="{{ url('/project') }} ">Project</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {{ Request::is('employee*') ? 'text-danger' : 'text-dark' }} text-center" href="{{ url('/employee') }} ">Employee</a>
-            </li>
-
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle {{ Request::is('income*') || Request::is('outcome*') ? 'text-danger' : 'text-dark' }} text-center" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 Transaction
@@ -350,12 +343,6 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link {{ Request::is('admin*') ? 'text-danger' : 'text-light' }}" href="{{ url('/admin') }} ">Admin</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link {{ Request::is('project*') ? 'text-danger' : 'text-light' }}" href="{{ url('/project') }} ">Project</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link {{ Request::is('employee*') ? 'text-danger' : 'text-light' }}" href="{{ url('/employee') }} ">Employee</a>
               </li>
 
               <li class="nav-item dropdown">
