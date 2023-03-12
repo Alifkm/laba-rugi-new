@@ -264,6 +264,9 @@
             <li class="nav-item">
               <a class="nav-link {{ Request::is('admin*') ? 'text-danger' : 'text-dark' }} text-center" href="{{ url('/admin') }} ">Admin</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link {{ Request::is('income*') ? 'text-danger' : 'text-dark' }} text-center" href="{{ url('/income') }} ">Income</a>
+            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle {{ Request::is('income*') || Request::is('outcome*') ? 'text-danger' : 'text-dark' }} text-center" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 Transaction
@@ -344,8 +347,14 @@
               <li class="nav-item">
                 <a class="nav-link {{ Request::is('admin*') ? 'text-danger' : 'text-light' }}" href="{{ url('/admin') }} ">Admin</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link {{ Request::is('income*') ? 'text-danger' : 'text-light' }}" href="{{ url('/income') }} ">Income</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {{ Request::is('outcome*') ? 'text-danger' : 'text-light' }}" href="{{ url('/outcome') }} ">Outcome</a>
+              </li>
 
-              <li class="nav-item dropdown">
+              {{-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle {{ Request::is('income*') || Request::is('outcome*') ? 'text-danger' : 'text-light' }}" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 Transaction
                 </a>
@@ -354,7 +363,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item text-dark" href="{{ url('/outcome') }}">Outcome</a>
                 </div>
-              </li>
+              </li> --}}
                 
               @can('thisIsSuperAdmin')            
               <li class="nav-item">
